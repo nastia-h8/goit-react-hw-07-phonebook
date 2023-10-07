@@ -26,11 +26,7 @@ export function Contacts() {
       <Title>Contacts</Title>
       <ContactFilter />
       {isLoading && <Loader />}
-      {contacts.length < 0 && !isLoading ? (
-        <Message>No contacts yet</Message>
-      ) : (
-        <ContactList />
-      )}
+      {!contacts.length ? <Message>No contacts yet</Message> : <ContactList />}
       {error && <p>{error}</p>}
     </>
   );

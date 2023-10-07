@@ -16,7 +16,7 @@ export function ContactList() {
   const visibleContacts = useSelector(selectVisibleContacts);
   const isLoading = useSelector(selectIsLoading);
 
-  return visibleContacts.length < 0 && !isLoading ? (
+  return !visibleContacts.length ? (
     <Message>No contacts found</Message>
   ) : (
     <>
