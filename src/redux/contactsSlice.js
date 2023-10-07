@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operations';
 
@@ -29,6 +30,7 @@ const handleFetchFulfilled = (state, { payload }) => {
 
 const handleAddFulfilled = (state, { payload }) => {
   state.items.push(payload);
+  toast.success(`You added ${payload.name} to your phonebook`);
 };
 
 const handleDeleteFulfilled = (state, { payload }) => {

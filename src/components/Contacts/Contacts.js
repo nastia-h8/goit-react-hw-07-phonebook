@@ -13,6 +13,7 @@ import { Title } from './Contacts.styled';
 
 export function Contacts() {
   const dispatch = useDispatch();
+
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -26,7 +27,11 @@ export function Contacts() {
       <Title>Contacts</Title>
       <ContactFilter />
       {isLoading && <Loader />}
-      {!contacts.length ? <Message>No contacts yet</Message> : <ContactList />}
+      {!contacts.length && !isLoading ? (
+        <Message>No contacts yet</Message>
+      ) : (
+        <ContactList />
+      )}
       {error && <p>{error}</p>}
     </>
   );
