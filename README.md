@@ -1,8 +1,9 @@
 # Phonebook
 
-Refactored by adding state control using the `[Redux Toolkit]`library.
+Upd:
 
-- Used configureStore(), createSlice().
-- Used the `React-redux` library to link React-components to Redux-logic.
-- Used the `Redux Persist` library to save an array of contacts to local
-  storage.
+- Removed the code responsible for storing and reading contacts from the local
+  storage, and added communication with the backend (`mockapi.io`) for storing
+  contacts
+- Used `createAsyncThunk` to declare asynchronous action generators and make
+  HTTP requests.

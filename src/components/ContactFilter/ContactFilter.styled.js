@@ -19,7 +19,7 @@ export const InputWrapper = styled.span`
 `;
 
 export const Input = styled.input`
-  min-width: 360px;
+  max-width: 360px;
   padding: 12px 40px 12px 12px;
   border: 1px solid ${p => p.theme.colors.border};
   border-radius: ${p => p.theme.radii.sm};

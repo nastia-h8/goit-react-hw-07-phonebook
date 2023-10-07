@@ -3,9 +3,7 @@ import * as yup from 'yup';
 import toast from 'react-hot-toast';
 
 import { useDispatch, useSelector } from 'react-redux';
-
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
 import { regex } from 'utils/regex';
 import {
   checkContactName,
@@ -22,6 +20,7 @@ import {
   Input,
   Message,
 } from './ContactForm.styled';
+import { addContact } from 'redux/operations';
 
 const Schema = yup.object().shape({
   name: yup
@@ -47,7 +46,7 @@ const initialValues = {
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = (contact, { resetForm }) => {
     const isNameInContactList = checkContactName(contacts, contact.name);

@@ -1,48 +1,25 @@
-import { useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectVisibleContacts } from 'redux/selectors';
 
-import { getContacts, getFilter } from 'redux/selectors';
-import { deleteContact } from 'redux/contactsSlice';
-
+import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { Message } from 'components/Message/Message';
 
-import { AiOutlineDelete } from 'react-icons/ai';
-import { List, Item, Name, Button, NumberWrapper } from './ContactList.styled';
+import { List } from './ContactList.styled';
 
 export function ContactList() {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const dispatch = useDispatch();
-
-  const visibleContacts = useMemo(() => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }, [contacts, filter]);
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
-    <List>
+    <>
       {visibleContacts.length > 0 ? (
-        visibleContacts.map(({ id, name, number }) => (
-          <Item key={id}>
-            <Name>{name}</Name>
-            <NumberWrapper>
-              <span>Number: </span>
-              {number}
-            </NumberWrapper>
-            <Button
-              type="button"
-              onClick={() => {
-                dispatch(deleteContact(id));
-              }}
-            >
-              <AiOutlineDelete size={20} />
-            </Button>
-          </Item>
-        ))
+        <List>
+          {visibleContacts.map(contact => (
+            <ContactListItem key={contact.id} {...contact} />
+          ))}
+        </List>
       ) : (
         <Message>No contacts found</Message>
       )}
-    </List>
+    </>
   );
 }
