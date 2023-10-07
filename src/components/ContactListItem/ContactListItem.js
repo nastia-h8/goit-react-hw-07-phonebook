@@ -6,6 +6,7 @@ import { Button, Item, Name, NumberWrapper } from './ContactListItem.styled';
 
 export function ContactListItem({ id, number, name }) {
   const dispatch = useDispatch();
+
   return (
     <Item>
       <Name>{name}</Name>
