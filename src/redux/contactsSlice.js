@@ -44,6 +44,18 @@ const contactsInitialState = {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
+  reducers: {
+    sortAscName(state) {
+      state.items = state.items.sort((first, second) =>
+        first.name.localeCompare(second.name)
+      );
+    },
+    sortDescName(state) {
+      state.items = state.items.sort((first, second) =>
+        second.name.localeCompare(first.name)
+      );
+    },
+  },
   extraReducers: builder => {
     const { PENDING, REJECTED, FULFILLED } = STATUS;
     builder
@@ -56,4 +68,5 @@ const contactsSlice = createSlice({
   },
 });
 
+export const { sortAscName, sortDescName } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

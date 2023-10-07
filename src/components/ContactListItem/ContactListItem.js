@@ -1,7 +1,8 @@
-import { Button, Item, Name, NumberWrapper } from './ContactListItem.styled';
-import { AiOutlineDelete } from 'react-icons/ai';
 import { deleteContact } from 'redux/operations';
 import { useDispatch } from 'react-redux';
+
+import { AiOutlineDelete } from 'react-icons/ai';
+import { Button, Item, Name, NumberWrapper } from './ContactListItem.styled';
 
 export function ContactListItem({ id, number, name }) {
   const dispatch = useDispatch();
@@ -12,12 +13,7 @@ export function ContactListItem({ id, number, name }) {
         <span>Number: </span>
         {number}
       </NumberWrapper>
-      <Button
-        type="button"
-        onClick={() => {
-          dispatch(deleteContact(id));
-        }}
-      >
+      <Button type="button" onClick={() => dispatch(deleteContact(id))}>
         <AiOutlineDelete size={20} />
       </Button>
     </Item>
