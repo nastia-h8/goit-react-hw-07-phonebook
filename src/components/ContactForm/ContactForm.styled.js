@@ -45,11 +45,12 @@ export const Message = styled(ErrorMessage)`
 
 export const Button = styled.button`
   margin: 0 auto;
-  min-width: 120px;
+  min-width: 140px;
   padding: ${p => p.theme.spacing(3)};
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: ${p => p.theme.spacing(2)};
   font-size: 16px;
   border: none;
   border-radius: ${p => p.theme.radii.sm};

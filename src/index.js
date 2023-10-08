@@ -9,7 +9,6 @@ const theme = {
   colors: {
     primary: '#212121',
     secondary: '#757575',
-    accent: '#7552db',
     light: '#ffffff',
     bgc: 'rgba(117, 117, 117, 0.4)',
     border: 'rgba(117, 117, 117, 0.2)',

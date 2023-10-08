@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import toast from 'react-hot-toast';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts, selectIsAdding } from 'redux/selectors';
 import { regex } from 'utils/regex';
 import {
   checkContactName,
@@ -47,6 +47,7 @@ const initialValues = {
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  const isAdding = useSelector(selectIsAdding);
 
   const handleSubmit = (contact, { resetForm }) => {
     const isNameInContactList = checkContactName(contacts, contact.name);
@@ -89,7 +90,7 @@ export const ContactForm = () => {
         </Label>
         <Message name="number" component="p" />
 
-        <Button type="submit">Add contact</Button>
+        <Button type="submit">{isAdding ? 'Adding...' : 'Add contact'}</Button>
       </FormField>
     </Formik>
   );

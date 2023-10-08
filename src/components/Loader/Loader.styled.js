@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const StyledLoader = styled.div`
   margin: 0 auto;
-  border: 6px solid ${p => p.theme.colors.border};
+  border: 6px solid ${p => p.theme.colors.secondary};
   border-top: 6px solid ${p => p.theme.colors.bgc};
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   animation: spin 2s linear infinite;
 
   @keyframes spin {
